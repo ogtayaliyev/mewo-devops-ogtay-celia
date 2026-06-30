@@ -25,7 +25,71 @@ Les scores max par jeu :
 - breakout → 896 980
 - donkeykong → 1 247 700
 
+<<<<<<< HEAD
 ## URLs
+=======
+---
+
+## Comment c'est organisé dans le code : 
+
+```
+app/
+  main.py       → les routes FastAPI
+  games.py      → la logique métier (validation, cooldown, tri)
+  db.py         → SQLite (scores + dernier envoi par joueur/jeu)
+  metrics.py    → compteurs Prometheus
+  middleware.py → mesure chaque requête HTTP (latence, status code)
+monitoring/     → config Prometheus, Grafana, alertes
+scripts/        → test de charge
+```
+
+La logique métier est dans `games.py` à part, comme ça les tests unitaires sont simples à écrire.
+
+---
+
+## Prérequis
+
+Avant de commencer, il te faut :
+
+- **Git** — pour cloner le repo
+- **Python 3.11+** — https://www.python.org/downloads/ (coche "Add Python to PATH" à l'installation sur Windows)
+- **Docker Desktop** — https://www.docker.com/products/docker-desktop/ (recommandé, lance API + monitoring d'un coup)
+
+Vérifie que c'est installé :
+```powershell
+git --version
+python --version
+docker --version
+```
+
+---
+
+## 1. Récupérer le projet
+
+```powershell
+git clone https://github.com/Freya-Tenebrae/MEWO_dev_ops.git
+cd MEWO_dev_ops
+```
+
+---
+
+## 2. Lancer le projet (méthode recommandée → Docker)
+
+C'est la méthode la plus simple : une commande lance **tout** (API, Prometheus, Grafana, Alertmanager).
+
+```powershell
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d
+```
+
+Attends ~30 secondes que les conteneurs démarrent. Vérifie :
+```powershell
+docker compose -f docker-compose.yml -f docker-compose.dev.yml ps
+```
+
+Tu dois voir 4 conteneurs **Up** : `api`, `prometheus`, `grafana`, `alertmanager`.
+
+### URLs une fois lancé
+>>>>>>> 14edc4c82d986f6db81794373afe11e8ef8b8522
 
 - **API / Swagger** : http://localhost:8000/docs
 - **Prometheus** : http://localhost:9090
