@@ -28,7 +28,19 @@ jobs:
         run: ruff check app tests
 
       - name: Unit tests
-        run: pytest -v
+        run: |
+          pytest tests/ \
+            -v \
+            --cov=app \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage.xml \
+            --junitxml=test-results.xml
+
+      - name: SonarCloud scan
+        if: env.SONAR_TOKEN != ''
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: SAST (bandit)
         run: bandit -r app -ll
