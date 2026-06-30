@@ -335,13 +335,11 @@ Pipeline `.github/workflows/ci.yml` à chaque push :
 5. pip-audit (CVE)
 6. build Docker + scan Trivy
 
-### SonarCloud (sans token dans la CI)
+### SonarCloud
 
-Pas de `SONAR_TOKEN` dans GitHub Actions — la CI reste simple et verte.
+La couverture et les résultats de tests sont publiés dans la CI via `coverage.xml` et `test-results.xml`, puis importés par le scan SonarCloud déclenché dans GitHub Actions.
 
-La qualité de code est suivie via **SonarCloud automatic analysis** (analyse auto quand le repo est lié sur https://sonarcloud.io). Le badge en haut du README pointe vers ce dashboard.
-
-Le fichier `sonar-project.properties` reste dans le repo pour la config SonarCloud côté plateforme.
+Le fichier `sonar-project.properties` reste dans le repo pour la config SonarCloud, et le secret `SONAR_TOKEN` doit être défini dans GitHub Actions.
 
 Si une étape casse, le pipeline est rouge. C'est volontaire.
 
