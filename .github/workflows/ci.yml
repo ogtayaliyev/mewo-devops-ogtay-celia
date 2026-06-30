@@ -35,6 +35,7 @@ jobs:
             --junitxml=test-results.xml
 
       - name: SonarCloud scan
+        if: env.SONAR_TOKEN != ''
         uses: SonarSource/sonarcloud-github-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
