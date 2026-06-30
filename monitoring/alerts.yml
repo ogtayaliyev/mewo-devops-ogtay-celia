@@ -1,0 +1,46 @@
+groups:
+  - name: arcade-alerts
+    rules:
+      - alert: ServiceDown
+        expr: up{job="arcade-api"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "API arcade indisponible"
+          description: "Prometheus ne scrape plus l'API (up == 0)."
+
+      - alert: HighLatency
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(http_request_duration_seconds_bucket{route!="/metrics"}[5m])) by (le)
+          ) > 0.5
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latence p95 élevée"
+          description: "La latence p95 dépasse 500 ms."
+
+      - alert: HighErrorRate
+        expr: |
+          sum(rate(http_requests_total{status=~"5.."}[5m]))
+          /
+          sum(rate(http_requests_total[5m]))
+          > 0.05
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Taux d'erreur 5xx élevé"
+          description: "Plus de 5 % des requêtes renvoient une erreur 5xx."
+
+      - alert: CheatSpike
+        expr: sum(increase(rejected_scores_total[1m])) >= 3
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Pic de tentatives de triche"
+          description: "Au moins 3 scores rejetés en 1 minute."

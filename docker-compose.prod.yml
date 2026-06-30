@@ -1,0 +1,8 @@
+# Prod : image figée, pas de montage du code, redémarrage auto
+services:
+  api:
+    build:
+      target: production
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info

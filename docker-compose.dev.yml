@@ -1,0 +1,11 @@
+# Dev : hot-reload, code monté, logs verbeux
+services:
+  api:
+    build:
+      target: development
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --log-level debug
+    volumes:
+      - ./app:/app/app:ro
+      - leaderboard_data:/data
+    environment:
+      - LOG_LEVEL=debug
