@@ -6,7 +6,7 @@ J'ai fait ça en **Python + FastAPI**, avec **SQLite** pour garder les scores, l
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ogtayaliyev_mewo-devops-ogtay-celia&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ogtayaliyev_mewo-devops-ogtay-celia)
 
-Repo : https://github.com/Freya-Tenebrae/MEWO_dev_ops
+Repo : https://github.com/ogtayaliyev/mewo-devops-ogtay-celia
 
 ---
 
