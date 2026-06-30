@@ -4,7 +4,7 @@ Projet d'éval DevOps : une petite API de classement pour des jeux d'arcade (Pac
 
 J'ai fait ça en **Python + FastAPI**, avec **SQLite** pour garder les scores, le tout dans **Docker**. Y'a aussi **Prometheus**, **Grafana** et **Alertmanager** pour le monitoring parce que c'était demandé dans le sujet.
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Freya-Tenebrae_MEWO_dev_ops&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Freya-Tenebrae_MEWO_dev_ops)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ogtayaliyev_mewo-devops-ogtay-celia&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ogtayaliyev_mewo-devops-ogtay-celia)
 
 Repo : https://github.com/Freya-Tenebrae/MEWO_dev_ops
 
