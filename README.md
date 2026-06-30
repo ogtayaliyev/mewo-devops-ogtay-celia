@@ -29,7 +29,7 @@ Les scores max par jeu :
 
 ---
 
-## Comment c'est organisé dans le code
+## Comment c'est organisé dans le code : 
 
 ```
 app/
