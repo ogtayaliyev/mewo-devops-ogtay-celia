@@ -339,10 +339,6 @@ Pipeline `.github/workflows/ci.yml` à chaque push :
 
 La couverture et les résultats de tests sont publiés dans la CI via `coverage.xml` et `test-results.xml`, puis importés par le scan SonarCloud déclenché dans GitHub Actions.
 
-Le fichier `sonar-project.properties` reste dans le repo pour la config SonarCloud, et le secret `SONAR_TOKEN` doit être défini dans GitHub Actions.
-
-Si une étape casse, le pipeline est rouge. C'est volontaire.
-
 ---
 
 ## Si Grafana ou Alertmanager ne marchent pas
